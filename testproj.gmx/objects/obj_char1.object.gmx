@@ -34,8 +34,43 @@ gravity = 0.1;
 image_speed = 0;
 image_index = 0;
 ismoving = false;
-alarm[0] = 0;
+alarm[0] = 1;
+alarm[1] = 1;
 
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+alarm[1] = 1;
+if keyboard_check(ord('f')) || keyboard_check(ord('F')) {
+    instance_create(x,y,obj_playerbullet);
+    instance_create(x,y,obj_playerbulletspread1);
+    instance_create(x,y,obj_playerbulletspread2);
+    audio_play_sound(snd_shot1,1,false);
+    if ismoving = false {
+    
+        }
+}
 </string>
           </argument>
         </arguments>
@@ -58,11 +93,15 @@ alarm[0] = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check(ord('q')) || keyboard_check(ord('Q')) {
+            <string>
+alarm[0] = 10;
+if keyboard_check(ord('q')) || keyboard_check(ord('Q')) {
     instance_create(x,y,obj_playerbullet);
     audio_play_sound(snd_shot1,1,false);
+    if ismoving = false {
+        alarm[0] = 7;
+        }
 }
-alarm[0] = 10;
 </string>
           </argument>
         </arguments>
@@ -103,6 +142,7 @@ if speed &lt; -maxspeed
     {
     speed = -maxspeed
     }
+// wraparound
 if place_meeting(x,y,obj_wraparoundarea)
     {
     if x &gt; 1000 
@@ -117,6 +157,9 @@ if place_meeting(x,y,obj_wraparoundarea)
         }
     }
     
+if playerdead == true {
+instance_destroy();
+}
 // spark effect while accelerating
 if ismoving == true
 {
@@ -129,6 +172,7 @@ if keyboard_check(vk_up)
     direction = movedir;
     rotationspeed = 2;
     image_index = 1;
+    ismoving = true;
     }
 if keyboard_check(vk_left)
     {
@@ -141,6 +185,29 @@ if keyboard_check(vk_right)
     image_angle -= rotationspeed;
     }
     
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_enemybulletweak">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>other</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -234,8 +301,7 @@ y = yprevious;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 10;
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>

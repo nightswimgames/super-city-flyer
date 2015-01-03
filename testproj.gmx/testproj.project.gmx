@@ -50,6 +50,8 @@
     <object>objects\obj_enemyline</object>
     <object>objects\obj_enemybulletweak</object>
     <object>objects\obj_playerbullet</object>
+    <object>objects\obj_playerbulletspread1</object>
+    <object>objects\obj_playerbulletspread2</object>
     <object>objects\obj_explosion1</object>
     <object>objects\obj_smallexplosion1</object>
     <object>objects\obj_enemytruck</object>
