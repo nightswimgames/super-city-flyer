@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>movedir = 90;
+            <string>// Init code for player creation
+
+movedir = 90;
 maxspeed = 5;
 rotationspeed = 5;
 image_angle = 90;
@@ -34,8 +36,8 @@ gravity = 0.1;
 image_speed = 0;
 image_index = 0;
 ismoving = false;
-alarm[0] = 1;
-alarm[1] = 1;
+alarm[0] = 1;           // alarm for checking Q key
+alarm[1] = 1;           // alarmfor checking F key
 
 
 </string>
@@ -60,14 +62,14 @@ alarm[1] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>// Programmer fire key - triple shots at a very high rate
 alarm[1] = 1;
 if keyboard_check(ord('f')) || keyboard_check(ord('F')) {
     instance_create(x,y,obj_playerbullet);
     instance_create(x,y,obj_playerbulletspread1);
     instance_create(x,y,obj_playerbulletspread2);
     audio_play_sound(snd_shot1,1,false);
-    if ismoving = false {
+    if ismoving == false {
     
         }
 }
@@ -94,12 +96,14 @@ if keyboard_check(ord('f')) || keyboard_check(ord('F')) {
           <argument>
             <kind>1</kind>
             <string>
+// Alarm 0 call back, check for Q pressed, fire and play sound
+// Fire rate is higher when player is not moving
 alarm[0] = 10;
 if keyboard_check(ord('q')) || keyboard_check(ord('Q')) {
     instance_create(x,y,obj_playerbullet);
     audio_play_sound(snd_shotsmall1,1,false);
-    if ismoving = false {
-        alarm[0] = 7;
+    if ismoving == false {                      // check for player moving
+        alarm[0] = 7;                           // not moving, increase fire reate
         }
 }
 </string>
@@ -124,40 +128,33 @@ if keyboard_check(ord('q')) || keyboard_check(ord('Q')) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// created speed variable
-if speed &gt;= 0
-    {
-    spd = speed;
-    }
-else
-    {
-    spd = -speed;
-    }
+            <string>// set speed variable
+//if speed &gt;= 0                 // store current speed, this if isn't needed either
+    spd = abs(speed);
+
+// The "else" is not needed since I'm using ABS() to get the absolute value
+//else
+//    spd = -speed;             // speed is stored as an absolute value
     
-if speed &gt; maxspeed
-    {
-    speed = maxspeed
-    }
-if speed &lt; -maxspeed
-    {
-    speed = -maxspeed
-    }
+if speed &gt; maxspeed             // speed &gt; max, set to max
+    speed = maxspeed;
+
+if speed &lt; -maxspeed            // reverse direction speed limit
+    speed = -maxspeed;
+
 // wraparound
-if place_meeting(x,y,obj_wraparoundarea)
-    {
-    if x &gt; 1000 
-        {
+if place_meeting(x,y,obj_wraparoundarea) {
+    if x &gt; 1000 {
         x = x - 6400
         wrapright = true;
-        }
-    else
-        {
+    }
+    else {
         x = x + 6400
         wrapleft = true;
-        }
     }
-    
-if playerdead == true {
+}
+// player death cleanup    
+if playerdead == true {                         
     audio_stop_all();
     instance_create(x,y,obj_explosion1big);
     instance_destroy();
@@ -165,9 +162,10 @@ if playerdead == true {
         audio_play_sound(snd_expl1,1,false);    
     }
 }
+
+// Re-write this part with a case statement?
 // controls
-if keyboard_check(vk_up)
-    {
+if keyboard_check(vk_up) {
     speed += 0.15;
     direction = movedir;
     rotationspeed = 2;
@@ -175,19 +173,17 @@ if keyboard_check(vk_up)
     ismoving = true;
     if (! audio_is_playing(snd_thrust)) {
         audio_play_sound(snd_thrust,1,true);
-        }
-    
     }
-if keyboard_check(vk_left)
-    {
+}
+if keyboard_check(vk_left) {
     movedir += rotationspeed;
     image_angle += rotationspeed;
-    }
-if keyboard_check(vk_right)
-    {
+}
+
+if keyboard_check(vk_right) {
     movedir -= rotationspeed;
     image_angle -= rotationspeed;
-    }
+}
     
 </string>
           </argument>
