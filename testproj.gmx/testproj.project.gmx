@@ -6,6 +6,10 @@
   <NewExtensions/>
   <sounds name="sound">
     <sound>sound\snd_shot1</sound>
+    <sound>sound\snd_shot2</sound>
+    <sound>sound\snd_expl1</sound>
+    <sound>sound\snd_expl2</sound>
+    <sound>sound\snd_expl3</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\teschra</sprite>
