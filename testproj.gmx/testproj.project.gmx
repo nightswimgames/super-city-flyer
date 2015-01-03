@@ -10,6 +10,9 @@
     <sound>sound\snd_expl1</sound>
     <sound>sound\snd_expl2</sound>
     <sound>sound\snd_expl3</sound>
+    <sound>sound\snd_smallhit1</sound>
+    <sound>sound\snd_shotsmall1</sound>
+    <sound>sound\snd_shotsmall2</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\teschra</sprite>
