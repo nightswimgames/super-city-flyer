@@ -13,6 +13,7 @@
     <sound>sound\snd_smallhit1</sound>
     <sound>sound\snd_shotsmall1</sound>
     <sound>sound\snd_shotsmall2</sound>
+    <sound>sound\snd_thrust</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\teschra</sprite>
@@ -52,13 +53,14 @@
     <object>objects\obj_weakenemy</object>
     <object>objects\obj_enemyline</object>
     <object>objects\obj_enemybulletweak</object>
+    <object>objects\obj_enemybullettruck</object>
     <object>objects\obj_playerbullet</object>
     <object>objects\obj_playerbulletspread1</object>
     <object>objects\obj_playerbulletspread2</object>
     <object>objects\obj_explosion1</object>
+    <object>objects\obj_explosion1big</object>
     <object>objects\obj_smallexplosion1</object>
     <object>objects\obj_enemytruck</object>
-    <object>objects\obj_enemytruckgun</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_city</room>

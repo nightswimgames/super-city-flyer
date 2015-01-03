@@ -97,7 +97,7 @@ if keyboard_check(ord('f')) || keyboard_check(ord('F')) {
 alarm[0] = 10;
 if keyboard_check(ord('q')) || keyboard_check(ord('Q')) {
     instance_create(x,y,obj_playerbullet);
-    audio_play_sound(snd_shot1,1,false);
+    audio_play_sound(snd_shotsmall1,1,false);
     if ismoving = false {
         alarm[0] = 7;
         }
@@ -158,12 +158,12 @@ if place_meeting(x,y,obj_wraparoundarea)
     }
     
 if playerdead == true {
-instance_destroy();
-}
-// spark effect while accelerating
-if ismoving == true
-{
-effect_create_below(ef_spark,x,y,0,c_ltgray)
+    audio_stop_all();
+    instance_create(x,y,obj_explosion1big);
+    instance_destroy();
+    if (! audio_is_playing(snd_expl1)) {
+        audio_play_sound(snd_expl1,1,false);    
+    }
 }
 // controls
 if keyboard_check(vk_up)
@@ -173,6 +173,10 @@ if keyboard_check(vk_up)
     rotationspeed = 2;
     image_index = 1;
     ismoving = true;
+    if (! audio_is_playing(snd_thrust)) {
+        audio_play_sound(snd_thrust,1,true);
+        }
+    
     }
 if keyboard_check(vk_left)
     {
@@ -382,6 +386,7 @@ ismoving = false;
             <string>rotationspeed = 5;
 ismoving = false;
 image_index = 0;
+audio_stop_sound(snd_thrust);
 </string>
           </argument>
         </arguments>

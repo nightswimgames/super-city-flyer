@@ -87,7 +87,8 @@ alarm[2] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if deathswitch == false
+            <string>//deciding when falling
+if deathswitch == false
 {
 if random_range(1,2) &gt; 1.5
     {
@@ -96,6 +97,7 @@ if random_range(1,2) &gt; 1.5
     gravity = 0.1;
     alarm[2] = 1;
     deathswitch = true;
+    audio_play_sound(snd_smallhit1,1,false);
     }
 else
     {
@@ -130,6 +132,7 @@ else
     if distance_to_object(obj_char1) &lt; 600
         {
         instance_create(x,y,obj_enemybulletweak);
+        audio_play_sound(snd_shotsmall2,1,false);
         }
     alarm[0] = random_range(40,60)
     }
