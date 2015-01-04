@@ -28,11 +28,15 @@
             <string>// Init code for player creation
 
 movedir = 90;
-maxspeed = 5;
+maxspeed = 6;
 rotationspeed = 5;
+ThrustOn = false;
+Momentum = 0.00;          // controls how much momenetum object has, decrement value for speed, smaller is more momentum
+Accel = .1;
 image_angle = 90;
 friction = 0;
 gravity = 0.1;
+//gravity = 0.0;
 image_speed = 0;
 image_index = 0;
 ismoving = false;
@@ -104,7 +108,7 @@ if keyboard_check(ord('q')) || keyboard_check(ord('Q')) {
     audio_play_sound(snd_shotsmall1,1,false);
     if ismoving == false {                      // check for player moving
         alarm[0] = 7;                           // not moving, increase fire reate
-        }
+    }
 }
 </string>
           </argument>
@@ -163,11 +167,28 @@ if playerdead == true {
     }
 }
 
-// Re-write this part with a case statement?
-// controls
+
+/*
+going to try a momentum style movement on this
+currently, direction changes are instant, you can rotate the ship to a new direction, hit the thrust and it immediately goes to full power in that direction
+
+create a thruston variable, when the up key is pressed thruston=true
+up key released, thrustoff=true
+in step, check thruston state, if false, decrement speed
+
+*/
+
+// Player momentum
+if !ThrustOn {
+    speed -= Momentum;
+    if speed &lt; 0 speed = 0;
+}
+    
+// Key handlers
 if keyboard_check(vk_up) {
-    speed += 0.15;
+    speed += Accel;
     direction = movedir;
+    ThrustOn=true;
     rotationspeed = 2;
     image_index = 1;
     ismoving = true;
@@ -184,7 +205,32 @@ if keyboard_check(vk_right) {
     movedir -= rotationspeed;
     image_angle -= rotationspeed;
 }
+
     
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_enemybullettruck">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>other</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// Destroy enemy bullests - acts upon "other" object
+instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -207,7 +253,8 @@ if keyboard_check(vk_right) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy();
+            <string>// Destroy enemy bullests - acts upon "other" object
+instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -230,7 +277,9 @@ if keyboard_check(vk_right) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>playerdead = true;
+            <string>// Player hit detection
+
+playerdead = true;
 </string>
           </argument>
         </arguments>
@@ -263,28 +312,6 @@ y = yprevious;
       </action>
     </event>
     <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string></string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="81">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -382,6 +409,7 @@ ismoving = false;
             <string>rotationspeed = 5;
 ismoving = false;
 image_index = 0;
+ThrustOn = false;
 audio_stop_sound(snd_thrust);
 </string>
           </argument>
