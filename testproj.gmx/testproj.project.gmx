@@ -68,6 +68,10 @@
     <object>objects\obj_explosion1big</object>
     <object>objects\obj_smallexplosion1</object>
     <object>objects\obj_enemytruck</object>
+    <object>objects\obj_topleftbox</object>
+    <object>objects\obj_toprightbox</object>
+    <object>objects\obj_bottomleftbox</object>
+    <object>objects\obj_bottomrightbox</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_city</room>
