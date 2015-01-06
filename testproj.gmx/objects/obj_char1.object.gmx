@@ -28,7 +28,7 @@
             <string>// Init code for player creation
 
 movedir = 90;
-maxspeed = 5;
+maxspeed = 6;
 rotationspeed = 5;
 ThrustOn = false;
 Momentum = 0.00;          // controls how much momenetum object has, decrement value for speed, smaller is more momentum
@@ -211,46 +211,6 @@ if keyboard_check(vk_right) {
           </argument>
         </arguments>
       </action>
-      <action>
-        <libid>1</libid>
-        <id>601</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_execute_script</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>9</kind>
-            <script>scr_simpleai</script>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-        </arguments>
-      </action>
     </event>
     <event eventtype="4" ename="obj_enemybullettruck">
       <action>
@@ -317,7 +277,7 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Player hit detection on street
+            <string>// Player hit detection
 
 playerdead = true;
 </string>
@@ -405,6 +365,30 @@ y = yprevious;
         <isnot>0</isnot>
       </action>
     </event>
+    <event eventtype="10" enumb="39">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+ismoving = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="10" enumb="38">
       <action>
         <libid>1</libid>
@@ -427,6 +411,30 @@ ismoving = false;
 image_index = 0;
 ThrustOn = false;
 audio_stop_sound(snd_thrust);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="37">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+ismoving = false;
 </string>
           </argument>
         </arguments>

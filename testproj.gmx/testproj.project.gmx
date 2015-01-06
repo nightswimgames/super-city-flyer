@@ -31,12 +31,6 @@
     <sprite>sprites\spr_enemytruck</sprite>
     <sprite>sprites\spr_enemytruckgun</sprite>
     <sprite>sprites\spr_smallexplosion1</sprite>
-    <sprites name="Ai_sprites">
-      <sprite>sprites\spr_topleftbox</sprite>
-      <sprite>sprites\spr_toprightbox</sprite>
-      <sprite>sprites\spr_bottomleftbox</sprite>
-      <sprite>sprites\spr_bottomrightbox</sprite>
-    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bck_background</background>
@@ -49,7 +43,6 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\screenwrap.gml</script>
-    <script>scripts\scr_simpleai.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_controller</object>
@@ -68,10 +61,6 @@
     <object>objects\obj_explosion1big</object>
     <object>objects\obj_smallexplosion1</object>
     <object>objects\obj_enemytruck</object>
-    <object>objects\obj_topleftbox</object>
-    <object>objects\obj_toprightbox</object>
-    <object>objects\obj_bottomleftbox</object>
-    <object>objects\obj_bottomrightbox</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_city</room>
