@@ -41,10 +41,7 @@ turnleft = false;
 alarm[0] = 1;
 deathswitch = false;
 weakenemy = instance_id;
-topleftbox = instance_create(x,y,obj_topleftbox);
-bottomleftbox = instance_create(x,y,obj_bottomleftbox);
-toprightbox = instance_create(x,y,obj_toprightbox);
-bottomrightbox = instance_create(x,y,obj_bottomrightbox);
+
 </string>
           </argument>
         </arguments>
@@ -185,20 +182,7 @@ if gostraight == true {
     rotationspeed = 2;
 }
 // ai
-scr_simpleai();
-topleftbox.x = x;
-toprightbox.x = x;
-bottomleftbox.x = x;
-bottomrightbox.x = x;
-topleftbox.y = y;
-toprightbox.y = y;
-bottomleftbox.y = y;
-bottomrightbox.y = y;
-topleftbox.image_angle = image_angle;
-toprightbox.image_angle = image_angle;
-bottomleftbox.image_angle = image_angle;
-bottomrightbox.image_angle = image_angle;
-    image_angle = direction;
+image_angle = direction;
     if distance_to_object(obj_char1) &gt; 1000
         {
         maxspeed = 15;
