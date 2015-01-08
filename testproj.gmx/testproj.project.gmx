@@ -36,6 +36,8 @@
     <sprite>sprites\spr_enemytruck</sprite>
     <sprite>sprites\spr_enemytruckgun</sprite>
     <sprite>sprites\spr_char1shadow</sprite>
+    <sprite>sprites\spr_exhaust</sprite>
+    <sprite>sprites\spr_exhaustbak</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bck_background</background>
@@ -69,6 +71,7 @@
     <object>objects\obj_char1shadow</object>
     <object>objects\obj_explosion2</object>
     <object>objects\obj_smallexplosion2</object>
+    <object>objects\obj_exhaust</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_city</room>
