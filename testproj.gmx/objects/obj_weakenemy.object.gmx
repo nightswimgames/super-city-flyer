@@ -62,8 +62,13 @@ deathswitch = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x + random_range(-7,7),y + random_range(-7,7),obj_smallexplosion1)
+            <string>if random_range(1,2) &gt; 1.5 {
 instance_create(x + random_range(-7,7),y + random_range(-7,7),obj_smallexplosion1)
+instance_create(x + random_range(-7,7),y + random_range(-7,7),obj_smallexplosion1)
+}
+else {
+instance_create(x + random_range(-7,7),y + random_range(-7,7),obj_smallexplosion2)
+}
 alarm[2] = 1
 </string>
           </argument>

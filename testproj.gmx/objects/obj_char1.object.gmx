@@ -160,7 +160,7 @@ if place_meeting(x,y,obj_wraparoundarea) {
 // player death cleanup    
 if playerdead == true {                         
     audio_stop_all();
-    instance_create(x,y,obj_explosion1big);
+    instance_create(x,y,obj_explosion2);
     instance_destroy();
     if (! audio_is_playing(snd_expl1)) {
         audio_play_sound(snd_expl1,1,false);    
@@ -231,6 +231,7 @@ if keyboard_check(vk_right) {
             <kind>1</kind>
             <string>// Destroy enemy bullests - acts upon "other" object
 instance_destroy();
+instance_create(x,y,obj_smallexplosion2);
 </string>
           </argument>
         </arguments>
@@ -255,6 +256,7 @@ instance_destroy();
             <kind>1</kind>
             <string>// Destroy enemy bullests - acts upon "other" object
 instance_destroy();
+instance_create(x,y,obj_smallexplosion2);
 </string>
           </argument>
         </arguments>
