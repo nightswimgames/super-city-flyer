@@ -31,6 +31,7 @@ globalvar wrapleft;
 playerdead = false;
 wrapright = false;
 wrapleft = false;
+audio_play_sound(snd_song1,1,true);
 </string>
           </argument>
         </arguments>

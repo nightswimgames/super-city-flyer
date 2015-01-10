@@ -14,6 +14,7 @@
     <sound>sound\snd_shotsmall1</sound>
     <sound>sound\snd_shotsmall2</sound>
     <sound>sound\snd_thrust</sound>
+    <sound>sound\snd_song1</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\teschra</sprite>
