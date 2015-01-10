@@ -32,17 +32,17 @@ maxspeed = 6;
 rotationspeed = 5;
 ThrustOn = false;
 Momentum = 0.00;          // controls how much momenetum object has, decrement value for speed, smaller is more momentum
-Accel = .1;
+Accel = .5;
 image_angle = 90;
 friction = 0;
 gravity = 0.1;
 //gravity = 0.0;
 image_speed = 0;
 image_index = 0;
+engineon = false;       // delay for turning engine on and off
 ismoving = false;
 alarm[0] = 1;           // alarm for checking Q key
 alarm[1] = 1;           // alarmfor checking F key
-alarm[2] = 1;
 
 </string>
           </argument>
@@ -66,46 +66,9 @@ alarm[2] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>   
-if ismoving {
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    instance_create(x,y,obj_exhaust);
-    }
-    alarm[2] = 1
+            <string>if engineon == false &amp;&amp; keyboard_check(vk_up) {
+engineon = true;
+}
 </string>
           </argument>
         </arguments>
@@ -247,9 +210,7 @@ if !ThrustOn {
 }
     
 // Key handlers
-if keyboard_check(vk_up) {
-    speed += Accel;
-    direction = movedir;
+if keyboard_check(vk_up) &amp;&amp; engineon == true {
     ThrustOn=true;
     rotationspeed = 2;
     image_index = 1;
@@ -259,12 +220,10 @@ if keyboard_check(vk_up) {
     }
 }
 if keyboard_check(vk_left) {
-    movedir += rotationspeed;
     image_angle += rotationspeed;
 }
 
 if keyboard_check(vk_right) {
-    movedir -= rotationspeed;
     image_angle -= rotationspeed;
 }
 </string>
@@ -343,6 +302,60 @@ instance_create(x,y,obj_smallexplosion2);
 
 playerdead = true;
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="38">
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>engineon</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>true</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>102</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_set_motion</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>-1</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>image_angle</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>Accel</string>
           </argument>
         </arguments>
       </action>
@@ -427,6 +440,31 @@ y = yprevious;
         <isnot>0</isnot>
       </action>
     </event>
+    <event eventtype="9" enumb="38">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if engineon == false {
+alarm[2] = 10;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="10" enumb="39">
       <action>
         <libid>1</libid>
@@ -472,6 +510,7 @@ ismoving = false;
 ismoving = false;
 image_index = 0;
 ThrustOn = false;
+engineon = false;
 audio_stop_sound(snd_thrust);
 </string>
           </argument>
